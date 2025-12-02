@@ -1,110 +1,101 @@
-# wings-hanson-jwt-auth
-Custom User Authentication API built with Django REST Framework and JWT for Wings Hanson preparation. Includes user registration, login, and stateless token-based authentication.
-🎯 Wings Hanson JWT Authentication & Movie Rating App
+# Wings Hanson JWT Authentication & Movie Rating App
 
-This repository is created for Wings Hanson preparation, demonstrating Custom JWT Authentication using Django REST Framework (DRF) along with examples of built-in token authentication methods (these built-in parts are included but commented for reference). It also includes a Movie Rating App module which can be used for hands-on practice or extended as part of the exam prep.
+[![Django](https://img.shields.io/badge/Django-4.0%2B-green)](https://www.djangoproject.com/) [![DRF](https://img.shields.io/badge/DRF-REST_Framework-blue)](https://www.django-rest-framework.org/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-📌 Project Overview
+---
 
-This project showcases:
+## 🚀 Overview
+A robust, production-ready Custom User Authentication API built with Django REST Framework and JWT, designed for Wings Hanson exam preparation and real-world applications. Features include user registration, login, stateless JWT authentication, and a modular Movie Rating App for hands-on practice and extensibility.
 
-✅ Custom User Model (implemented as a plain models.Model, not inheriting from AbstractUser / AbstractBaseUser)
+---
 
-🔐 Stateless JWT Authentication implemented manually (PyJWT)
+## 📦 Features
+- **Custom User Model**: Built from scratch using `models.Model` (not AbstractUser/AbstractBaseUser)
+- **Stateless JWT Authentication**: Manual implementation using PyJWT for secure, scalable token-based auth
+- **Role-Based Access**: User roles for fine-grained permission control
+- **Registration & Login Endpoints**: Secure password hashing with Django's `make_password`
+- **Movie Rating Module**: Extendable endpoints for movies, ratings, and reviews
+- **Built-in Auth Examples**: SimpleJWT & DRF token auth included as commented reference
+- **No Session Storage**: Purely stateless, scalable API design
+- **Extensible Architecture**: Ready for CI, testing, documentation, and advanced features
 
-🔁 Built-in authentication examples (SimpleJWT TokenObtainPairView and DRF token auth) — included as commented code for reference
+---
 
-🎬 Movie Rating App — simple practice module to be updated/extended
-
-🧩 Features
-🔸 Authentication
-
-Custom JWT implementation (stateless) returning a JWT on successful login.
-
-Registration endpoint for new users (stores hashed passwords via Django's make_password).
-
-Role field on user (role) for role-based behavior.
-
-Commented code shows how to switch to simplejwt or DRF token auth if desired.
-
-No session or server-side token storage by default (stateless).
-
-🔸 Movie Rating App
-
-Basic movie listing, creation, and rating endpoints ready to be completed/extended.
-
-Useful practice module for Wings Hanson hands-on exercises.
-
-🗂️ Project Structure (example)
-wings-hanson-jwt-auth/
-├── app/
-│   ├── models.py          # Custom User model + Movie models
-│   ├── serializers.py     # Register/Login, Movie serializers
-│   ├── views.py           # Register, Login, Movie APIs
-│   ├── authentication.py  # Custom JWT authentication class
+## 🗂️ Project Structure
+```
+MyWatchlist/
+├── user_app/
+│   ├── models.py          # Custom User & Movie models
+│   ├── serializers.py     # User, Auth, Movie serializers
+│   ├── views.py           # API endpoints
+│   ├── authentication.py  # Custom JWT logic
 │   ├── urls.py            # API routes
-│   ├── admin.py           # optional admin registration
-│   └── tests.py           # optional tests
+│   ├── admin.py           # Admin registration
+│   └── tests.py           # Unit tests
+├── watchlist/             # Movie rating app
 ├── manage.py
 ├── requirements.txt
 └── README.md
+```
 
-⚙️ Installation & Setup
+---
 
-Clone the repository
+## ⚙️ Installation & Setup
+1. **Clone the repository**
+   ```sh
+   git clone https://github.com/myselfsubha/wings-hanson-jwt-auth.git
+   cd wings-hanson-jwt-auth
+   ```
+2. **Create & activate a virtual environment**
+   ```sh
+   python -m venv venv
+   venv\Scripts\activate      # Windows
+   source venv/bin/activate   # Linux/macOS
+   ```
+3. **Install dependencies**
+   ```sh
+   pip install -r requirements.txt
+   ```
+   Example requirements:
+   - Django>=4.0
+   - djangorestframework
+   - djangorestframework-simplejwt
+4. **Apply migrations**
+   ```sh
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+5. **Run the development server**
+   ```sh
+   python manage.py runserver
+   ```
 
-git clone https://github.com/myselfsubha/wings-hanson-jwt-auth.git
-cd wings-hanson-jwt-auth
+---
 
+## 🧩 Practice & Extension Ideas
+- Implement refresh tokens & blacklisting
+- Add advanced role-based permissions (admin, user, etc.)
+- Extend Movie Rating App: average ratings, review comments
+- Integrate API documentation (Swagger/Redoc)
+- Add rate-limiting/throttling for security
+- Write unit tests & set up CI/CD
 
-Create a virtual environment & activate
+---
 
-python -m venv venv
-source venv/bin/activate   # Linux/macOS
-venv\Scripts\activate      # Windows
+## 📚 Documentation & References
+- [Django REST Framework](https://www.django-rest-framework.org/)
+- [PyJWT](https://pyjwt.readthedocs.io/en/stable/)
+- [SimpleJWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
 
+---
 
-Install dependencies
+## 👤 Author
+**Subhajit Ghorai**  
+Wings Hanson Preparation | Python Developer  
+Email: fullscreen.abc@gmail.com  
+Website: [myselfsubha.pythonanywhere.com](https://myselfsubha.pythonanywhere.com/)
 
-Example requirements.txt entries you may include:
+---
 
-Django>=4.0
-djangorestframework
-djangorestframework-simplejwt  
-
-
-Migrate database
-
-python manage.py makemigrations
-python manage.py migrate
-
-
-Run server
-
-python manage.py runserver
-
-🧠 Practice Ideas & Tasks (for Wings Hanson)
-
-Implement refresh tokens and token blacklisting.
-
-Add role-based access (e.g., admin vs. normal user).
-
-Finish the Movie Rating App:
-
-Add average ratings and review comments.
-
-Add tests and CI checks.
-
-Add API documentation (Swagger / Redoc).
-
-Add rate-limiting / throttling for login endpoints to prevent brute force.
-
-🧑‍🏫 Author
-
-Subhajit Ghorai
-Wings Hanson Preparation | Python Developer
-
-Email: fullscreen.abc@gmail.com
-Website : https://myselfsubha.pythonanywhere.com/
-
-⭐ If this project helped you, please give it a star on GitHub — and feel free to fork and extend the Movie Rating App for practice. Good luck with your Wings Hanson hands-on exam! 🚀
+## ⭐ Contributing & Support
+If you find this project helpful, please ⭐ star the repo and feel free to fork, extend, or open issues for suggestions. Good luck with your Wings Hanson hands-on exam! 🚀
